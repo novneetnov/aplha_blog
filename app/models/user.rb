@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
 											 uniqueness: {case_sensitive: false}, 
 											 length: {minimum: 3, maximum: 25}
 
-	VALID_EMAIL_REGEX = /\A[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+\z/i
+	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i 
 	validates :email, presence: true,
 										uniqueness: {case_sensitive: false},
 										length: {maximum: 105},
 										format: {with: VALID_EMAIL_REGEX}
+
+	has_secure_password
 
 end
